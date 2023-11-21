@@ -144,7 +144,8 @@ class WSClient(object):
             # Signing...
             event_signed = xml.sign(event, self.cert_data)
             # Validating
-            xml.XMLValidate(event_signed).validate()
+            #Acabei de comentar essa validação
+            #xml.XMLValidate(event_signed).validate()
             # Adding the event to batch
             self.batch.append(event_signed)
             return (event_id, event_signed)

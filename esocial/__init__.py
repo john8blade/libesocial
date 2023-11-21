@@ -19,8 +19,8 @@ access eSocial government webservices to send and retrieve events batchs.
 """
 __version__ = '0.1.0'
 
-# __esocial_version__ = '2.5.00'
-__esocial_version__ = 'S-1.0'
+__esocial_version__ = '2.5.00'
+#__esocial_version__ = 'S-1.0'
 
 __xsd_versions__ = {
     'send': {
