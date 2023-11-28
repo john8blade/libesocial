@@ -12,3 +12,6 @@ __pycache__
 *.vcs
 .idea
 .vscode
+
+env/
+
