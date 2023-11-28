@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtMonit/v_S_01_01_00">
+    <evtMonit Id="ID1334349420000002023112320355200000">
+        <ideEvento>
+            <indRetif>1</indRetif>
+            <tpAmb>1</tpAmb>
+            <procEmi>1</procEmi>
+            <verProc>v_S_01_01_00</verProc>
+        </ideEvento>
+        <ideEmpregador>
+            <tpInsc>1</tpInsc>
+            <nrInsc>33434942</nrInsc>
+        </ideEmpregador>
+        <ideVinculo>
+            <cpfTrab>01972655612</cpfTrab>
+            <matricula>00059000003</matricula>
+        </ideVinculo>
+        <exMedOcup>
+            <tpExameOcup>0</tpExameOcup>
+            <aso>
+                <dtAso>2023-11-10</dtAso>
+                <resAso>1</resAso>
+                <exame>
+                    <dtExm>2023-11-10</dtExm>
+                    <procRealizado>0295</procRealizado>
+                </exame>
+                <medico>
+                    <nmMed>GABRIELA PACHECO DE ASSIS</nmMed>
+                    <nrCRM>97634</nrCRM>
+                    <ufCRM>MG</ufCRM>
+                </medico>
+            </aso>
+            <respMonit>
+                <cpfResp>07942590658</cpfResp>
+                <nmResp>KARLA ALEXANDRE LANA</nmResp>
+                <nrCRM>52588</nrCRM>
+                <ufCRM>MG</ufCRM>
+            </respMonit>
+        </exMedOcup>
+    </evtMonit>
+</eSocial>

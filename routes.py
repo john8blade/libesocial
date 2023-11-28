@@ -1,18 +1,20 @@
-from flask import request
+from flask import request, jsonify
 from lxml import etree
 import esocial.xml
 import respostaAoEnvio
 import enviaLote
 
+
 def add_routes(app):
     @app.route('/', methods=['POST'])
     def upload_xml():
         # Imprimir todos os cabeçalhos da requisição
-        print("Cabeçalhos Recebidos:")
+        #print("Cabeçalhos Recebidos:")
         user = request.headers.get('user')
         pw = request.headers.get('password')
         event = request.headers.get('evento')
-        print(user,pw,event)
+        nrInsc = request.headers.get('nrInsc')
+        #print(user,pw,event,nrInsc)
         # Verifica se há dados na requisição
         if request.data:
             xml_data = request.data  # Obtém os dados XML diretamente
@@ -20,10 +22,12 @@ def add_routes(app):
             # Por exemplo, salvar em um arquivo, analisar, etc.
             element = esocial.xml.load_fromstring(xml_data)
             xml = etree.tostring(element, pretty_print=True).decode()
-            print(xml)
-            #teste = enviaLote.enviaLote()
-            #teste.enviaS_2220(xml_data)
-            return "XML recebido com sucesso", 200
+            #print(xml)
+            teste = enviaLote.enviaLote()
+            status, dados_recepcao_lote, xml_data = teste.enviaS_2220(nrInsc, xml_data)
+            print(status)
+            print(dados_recepcao_lote)
+            return jsonify({'status': status, 'dadosRecepcaoLote': dados_recepcao_lote, 'esocial_envio_retorno' : xml_data}), 200
         else:
             return "Nenhum dado XML recebido", 400
 
@@ -33,13 +37,11 @@ def add_routes(app):
         user = request.headers.get('user')
         pw = request.headers.get('password')
         event = request.headers.get('evento')
-        print(user, pw, event)
+        empregador_cnpj = request.headers.get('nrInsc')
+        protocoloEnvio = request.headers.get('protocoloEnvio')
 
-        if request.data:
-            reciboLote = request.data.decode('utf-8')
-            consultaDoRecibo = respostaAoEnvio.ConsultaRespostaEnvioLote()
-            consultaDoRecibo.consultaReciboLote(reciboLote)
-            print('Recibo Consultado: ',reciboLote)
-            return "Status", 200
-        else:
-            return "Erro", 400
+
+        consultaDoRecibo = respostaAoEnvio.ConsultaRespostaEnvioLote()
+        resultadoConsutlaLoteesocial_consulta_lote_api_processamento, esocial_consulta_lote_api_recibo = consultaDoRecibo.consultaReciboLote(protocoloEnvio, empregador_cnpj)
+
+        return jsonify({'resultadoConsutlaLoteesocial_consulta_lote_api_processamento': resultadoConsutlaLoteesocial_consulta_lote_api_processamento, 'esocial_consulta_lote_api_recibo': esocial_consulta_lote_api_recibo }), 200
