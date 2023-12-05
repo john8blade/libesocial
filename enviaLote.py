@@ -21,7 +21,7 @@ class enviaLote():
             employer_id=self.ide_empregador,
             # Se o transmissor é o próprio empregador, não precisa informar o "sender_id"
             sender_id=self.ide_transmissor,
-            #target='production'
+            target='production'
         )
     def enviaS_2220(self, nrInsc, xml_S_2220):
         self.ide_empregador['nrInsc'] = nrInsc
