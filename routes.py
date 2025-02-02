@@ -17,6 +17,7 @@ def add_routes(app):
         #print(user,pw,event,nrInsc)
         # Verifica se há dados na requisição
         if request.data:
+            print(request.data)
             xml_data = request.data  # Obtém os dados XML diretamente
             # Aqui, você pode processar o XML conforme necessário
             # Por exemplo, salvar em um arquivo, analisar, etc.
